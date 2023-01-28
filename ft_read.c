@@ -6,7 +6,7 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:57:43 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/26 17:05:51 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:29:41 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,15 @@ void	check_items(t_map *map)
 	int	i;
 	int	p;
 	int	e;
-	int	c;
 
 	i = 0;
 	p = 0;
 	e = 0;
-	c = 0;
+	map->collect = 0;
 	while (map->str[i])
 	{
 		if (map->str[i] == 'C')
-			c += 1;
+			map->collect += 1;
 		if (map->str[i] == 'P')
 			p += 1;
 		if (map->str[i] == 'E')
@@ -67,7 +66,7 @@ void	check_items(t_map *map)
 		print_error("The map must contain  1 starting position");
 	if (e != 1)
 		print_error("The map must contain 1 exit");
-	if (c < 1)
+	if (map->collect < 1)
 		print_error("The map must contain at least 1 collectible!");
 }
 
@@ -126,8 +125,8 @@ void	check_body(t_map *map)
 void	check(t_map *map)
 {
 	check_composed(map);
-	check_items(map);
+	map->collect = check_items(map);
 	check_rectangular(map);
-	check_empty(map);
+	check_Walls(map);
 	check_body(map);
 }

@@ -41,5 +41,5 @@ int main(int ac, char **av)
         mlx_loop(mlx_ptr);
     }
     else
-        printf("Not enough!");
+        printf("Not enough of args!");
 }

@@ -6,7 +6,7 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:35:26 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/25 04:18:41 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:54:50 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 
 typedef struct s_player
 {
-	int			x;
-	int			y;
 }				t_player;
 
 typedef struct s_show
@@ -38,6 +36,10 @@ typedef struct s_map
 	char    *str;
 	int     fd;
 	char    **split_map;
+	int			pos_x;
+	int			pos_y;
+	int		collect;
+	int		movement;
 }   t_map;
 
 char	*ft_add_join(int fd, char *saved);
