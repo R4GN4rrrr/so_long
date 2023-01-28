@@ -6,7 +6,7 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:42:23 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/28 23:42:51 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/28 23:47:28 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void    up(t_map *map)
         map->split_map[map->pos_y - 1][map->pos_x] = 'P';
         map->split_map[map->pos_y][map->pos_x] = '0';
         map->pos_y--;
-        map->collect--;
+        map->coin_nbr--;
     }
     else
         map->split_map[map->pos_y - 1][map->pos_x] = 'P';
