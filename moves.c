@@ -6,7 +6,7 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:42:23 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/27 21:22:52 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/28 21:30:11 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,5 @@ int keybord(int key, t_map *map)
         right(map);
     if (key == 123 || key == 0)
         left(map);
+    return (0);
 }

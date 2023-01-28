@@ -1,45 +1,80 @@
 #include <mlx.h>
 #include <stdio.h>
 #include "so_long.h"
-typedef struct s_t7rk
+int quit()
 {
-    int a;
-}   t_ta7arok;
-int keybord(int key,t_ta7arok *move)
+	exit(0);
+	return (0);
+}
+
+void    ft_show_in_map(t_map *map)
 {
-    //printf("%d\n", key);
-    move->a++;
-    if (key == 126)
-        printf("%d: up\n", move->a);
-    if (key == 125)
-        printf("%d: down\n",move->a);
-    if (key == 124)
-        printf("%d: right\n",move->a);
-    if (key == 123)
-        printf("%d: left\n",move->a);
-    return 0;
+	int i;
+	int j = 0;
+	int x;
+	int y;
+	int l = 0, k = 0;
+
+	map->player = mlx_xpm_file_to_image(map->mlx_ptr, "./textures/player.xpm", &x, &y);
+	map->ground = mlx_xpm_file_to_image(map->mlx_ptr, "./textures/floor.xpm", &x, &y);
+	map->coin = mlx_xpm_file_to_image(map->mlx_ptr, "./textures/collect_.xpm", &x, &y);
+	map->door = mlx_xpm_file_to_image(map->mlx_ptr, "./textures/open_exit.xpm", &x, &y);
+	map->wall = mlx_xpm_file_to_image(map->mlx_ptr, "./textures/wall.xpm", &x, &y);
+
+	i = 0;
+	while (map->split_map[i])
+	{
+		j = 0;
+		l = 0;
+		while (map->split_map[i][j])
+		{
+			if (map->split_map[i][j] == '1')
+			{
+				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->wall, l, k);
+			}
+			if (map->split_map[i][j] == 'C')
+			{
+				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->ground, l, k);
+				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->coin, l, k);
+			}
+			if (map->split_map[i][j] == 'E')
+			{
+				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->door, l, k);
+			}
+			if (map->split_map[i][j] == '0')
+			{
+				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->ground, l, k);
+			}
+			if (map->split_map[i][j] == 'P')
+			{
+				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->ground, l, k);
+				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->player, l, k);
+			}
+			l += 70;
+			j++;
+		}
+		k += 70;
+		i++;
+	}
 }
 int main(int ac, char **av)
 {
-    t_map map;
-    if (ac == 2)
-    {
-        int x,y;
-        t_ta7arok move_nbr;
-        move_nbr.a = 0;
-        void *mlx_ptr = mlx_init();
-        map.fd = open(av[1], O_RDWR, 0777);
-        if (map.fd == -1)
-            return 0;
-        readmap(&map);
-        check(&map);
-        void *mlx_win = mlx_new_window(mlx_ptr, 500, 500, "fir3awn");
-        void *mlx_img = mlx_xpm_file_to_image(mlx_ptr, "image.xpm", &x, &y);
-        mlx_put_image_to_window(mlx_ptr, mlx_win, mlx_img, 0, 250);
-        mlx_key_hook(mlx_win, keybord, &move_nbr);
-        //mlx_hook()
-        mlx_loop(mlx_ptr);
-    }
-    else
-        printf("Not enough of args!");
+	t_map map;
+	if (ac == 2)
+	{
+		map.move_nbr = 0;
+		map.mlx_ptr = mlx_init();
+		map.fd = open(av[1], O_RDWR, 0777);
+		if (map.fd == -1)
+			return 0;
+		readmap(&map);
+		check(&map);
+		map.win_ptr = mlx_new_window(map.mlx_ptr, width_map(&map) * 70, lenght_map(&map) * 70, "so_long");
+		mlx_hook(map.win_ptr, 2, 0,keybord, &map);
+		ft_show_in_map(&map);
+		mlx_hook(map.win_ptr, 17, 0, quit, &map);
+		mlx_loop(map.mlx_ptr);
+	}
+	else 
+		printf("Not enough of args!");
 }

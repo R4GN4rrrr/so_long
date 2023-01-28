@@ -12,6 +12,8 @@ SOURCES = so_long.c\
 		./libft/ft_strncmp.c\
 		./libft/ft_strlen.c\
 		./libft/ft_putstr_fd.c\
+		window.c\
+		moves.c\
 
 OBJECTS = $(SOURCES:.c=.o)
 

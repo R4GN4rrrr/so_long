@@ -6,7 +6,7 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:57:43 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/27 16:29:41 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/28 01:27:21 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void	check_body(t_map *map)
 void	check(t_map *map)
 {
 	check_composed(map);
-	map->collect = check_items(map);
+	check_items(map);
 	check_rectangular(map);
 	check_Walls(map);
 	check_body(map);

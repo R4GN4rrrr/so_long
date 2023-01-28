@@ -6,7 +6,7 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:35:26 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/27 16:54:50 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/28 21:29:03 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,11 @@
 # include <mlx.h>
 # include <fcntl.h>
 # include "./libft/libft.h"
-
-typedef struct s_player
-{
-}				t_player;
-
-typedef struct s_show
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-	void		*img;
-}	t_show;
 	
 typedef struct s_map
 {
+	void		*mlx_ptr;
+	void		*win_ptr;
 	int 	i;
 	char    *str;
 	int     fd;
@@ -40,6 +31,12 @@ typedef struct s_map
 	int			pos_y;
 	int		collect;
 	int		movement;
+	void	*player;
+	void	*ground;
+	void	*coin;
+	void	*door;
+	void	*wall;
+	int	move_nbr;
 }   t_map;
 
 char	*ft_add_join(int fd, char *saved);
@@ -53,4 +50,8 @@ int		ft_strch(char *s);
 void    readmap(t_map *map);
 void	check(t_map *map);
 void 	print_error(char *s);
+int width_map(t_map *map);
+int lenght_map(t_map *map);
+int keybord(int key, t_map *map);
+
 #endif
