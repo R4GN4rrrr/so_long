@@ -60,6 +60,7 @@ void    ft_show_in_map(t_map *map)
 int main(int ac, char **av)
 {
 	t_map map;
+	map.coin_nbr = 0;
 	if (ac == 2)
 	{
 		map.move_nbr = 0;
@@ -69,6 +70,8 @@ int main(int ac, char **av)
 			return 0;
 		readmap(&map);
 		check(&map);
+		coin_nbr(&map);
+		printf("%d\n", map.coin_nbr);
 		map.win_ptr = mlx_new_window(map.mlx_ptr, width_map(&map) * 70, lenght_map(&map) * 70, "so_long");
 		mlx_hook(map.win_ptr, 2, 0,keybord, &map);
 		ft_show_in_map(&map);

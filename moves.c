@@ -6,12 +6,24 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:42:23 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/28 21:30:11 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/28 23:42:51 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void    coin_nbr(t_map *map)
+{
+    int i;
+
+    i = 0;
+    while (map->str[i])
+    {
+        if (map->str[i] == 'C')
+            map->coin_nbr++;
+        i++;
+    }
+}
 void    up(t_map *map)
 {
     if (map->split_map[map->pos_y - 1][map->pos_x] == '1')

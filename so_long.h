@@ -6,7 +6,7 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:35:26 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/28 21:29:03 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/28 23:46:19 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ typedef struct s_map
 	char    *str;
 	int     fd;
 	char    **split_map;
-	int			pos_x;
-	int			pos_y;
+	int		pos_x;
+	int		pos_y;
 	int		collect;
 	int		movement;
 	void	*player;
@@ -37,6 +37,7 @@ typedef struct s_map
 	void	*door;
 	void	*wall;
 	int	move_nbr;
+	int	coin_nbr;
 }   t_map;
 
 char	*ft_add_join(int fd, char *saved);
@@ -53,5 +54,5 @@ void 	print_error(char *s);
 int width_map(t_map *map);
 int lenght_map(t_map *map);
 int keybord(int key, t_map *map);
-
+void    coin_nbr(t_map *map);
 #endif
