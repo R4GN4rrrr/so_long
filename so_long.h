@@ -6,7 +6,7 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:35:26 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/29 00:34:12 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/29 04:34:35 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ typedef struct s_map
 	void	*player;
 	void	*ground;
 	void	*coin;
-	void	*door;
+	void	*o_door;
+	void	*c_door;
 	void	*wall;
 	int	move_nbr;
 	int	coin_nbr;

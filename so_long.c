@@ -18,7 +18,8 @@ void    ft_show_in_map(t_map *map)
 	map->player = mlx_xpm_file_to_image(map->mlx_ptr, "./textures/player.xpm", &x, &y);
 	map->ground = mlx_xpm_file_to_image(map->mlx_ptr, "./textures/floor.xpm", &x, &y);
 	map->coin = mlx_xpm_file_to_image(map->mlx_ptr, "./textures/collect_.xpm", &x, &y);
-	map->door = mlx_xpm_file_to_image(map->mlx_ptr, "./textures/open_exit.xpm", &x, &y);
+	map->o_door = mlx_xpm_file_to_image(map->mlx_ptr, "./textures/open_exit.xpm", &x, &y);
+	map->c_door = mlx_xpm_file_to_image(map->mlx_ptr, "./textures/closed_exit.xpm", &x, &y);
 	map->wall = mlx_xpm_file_to_image(map->mlx_ptr, "./textures/wall.xpm", &x, &y);
 
 	i = 0;
@@ -39,7 +40,10 @@ void    ft_show_in_map(t_map *map)
 			}
 			if (map->split_map[i][j] == 'E')
 			{
-				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->door, l, k);
+				if (map->coin_nbr == 0)
+					mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->o_door, l, k);
+				else
+					mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->c_door, l, k);
 			}
 			if (map->split_map[i][j] == '0')
 			{
