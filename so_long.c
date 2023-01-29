@@ -61,6 +61,7 @@ int main(int ac, char **av)
 {
 	t_map map;
 	map.coin_nbr = 0;
+	map.movement = 0;
 	if (ac == 2)
 	{
 		map.move_nbr = 0;
@@ -76,6 +77,7 @@ int main(int ac, char **av)
 		mlx_hook(map.win_ptr, 2, 0,keybord, &map);
 		ft_show_in_map(&map);
 		mlx_hook(map.win_ptr, 17, 0, quit, &map);
+		printf("%d--%d\n", map.p1, map.p2);
 		mlx_loop(map.mlx_ptr);
 	}
 	else 

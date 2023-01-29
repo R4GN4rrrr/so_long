@@ -6,11 +6,27 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:42:23 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/28 23:47:28 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/29 00:40:13 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "so_long.h"
+void    find_palyer(t_map *map)
+{
+    map->p1 = 0;
+    while (map->split_map[map->p1])
+    {
+        map->p2 = 0;
+        while (map->split_map[map->p1][map->p2])
+        {
+            if (map->split_map[map->p1][map->p2] == 'P')
+                return ;
+            map->p2++;
+        }
+        map->p1++;
+    }
+}
 
 void    coin_nbr(t_map *map)
 {
@@ -26,97 +42,123 @@ void    coin_nbr(t_map *map)
 }
 void    up(t_map *map)
 {
-    if (map->split_map[map->pos_y - 1][map->pos_x] == '1')
+    if (map->split_map[map->p1 - 1][map->p2] == '1')
         return ;
-    if (map->split_map[map->pos_y - 1][map->pos_x] == 'E'
-        && map->collect != 0)
+    if (map->split_map[map->p1 - 1][map->p2] == 'E'
+        && map->coin_nbr != 0)
         return ;
-    if (map->split_map[map->pos_y - 1][map->pos_x] == 'C')
+     if (map->split_map[map->p1 - 1][map->p2] == 'E'
+        && map->coin_nbr == 0)
+        exit(0);
+    if (map->split_map[map->p1 - 1][map->p2] == 'C')
     {
-        map->split_map[map->pos_y - 1][map->pos_x] = 'P';
-        map->split_map[map->pos_y][map->pos_x] = '0';
-        map->pos_y--;
+        map->split_map[map->p1 - 1][map->p2] = 'P';
+        map->split_map[map->p1][map->p2] = '0';
         map->coin_nbr--;
     }
     else
-        map->split_map[map->pos_y - 1][map->pos_x] = 'P';
-        map->split_map[map->pos_y][map->pos_x] = '0';
-        map->pos_y--;
+    {
+        map->split_map[map->p1 - 1][map->p2] = 'P';
+        map->split_map[map->p1][map->p2] = '0';
+    }
     map->movement++;
 }
 
 void    down(t_map *map)
 {
-    if (map->split_map[map->pos_y + 1][map->pos_x] == '1')
+    if (map->split_map[map->p1+ 1][map->p2] == '1')
         return ;
-    if (map->split_map[map->pos_y + 1][map->pos_x] == 'E'
-        && map->collect != 0)
+    if (map->split_map[map->p1+ 1][map->p2] == 'E'
+        && map->coin_nbr != 0)
         return ;
-    if (map->split_map[map->pos_y + 1][map->pos_x] == 'C')
+    if (map->split_map[map->p1 + 1][map->p2] == 'E'
+        && map->coin_nbr == 0)
+        exit(0);
+    if (map->split_map[map->p1+ 1][map->p2] == 'C')
     {
-        map->split_map[map->pos_y + 1][map->pos_x] = 'P';
-        map->split_map[map->pos_y][map->pos_x] = '0';
-        map->pos_y++;
-        map->collect--;
+        map->split_map[map->p1+ 1][map->p2] = 'P';
+        map->split_map[map->p1][map->p2] = '0';
+        map->coin_nbr--;
     }
     else
-        map->split_map[map->pos_y + 1][map->pos_x] = 'P';
-        map->split_map[map->pos_y][map->pos_x] = '0';
-        map->pos_y++;
+    {
+        map->split_map[map->p1+ 1][map->p2] = 'P';
+        map->split_map[map->p1][map->p2] = '0';
+    }
     map->movement++;
 }
 
 void    right(t_map *map)
 {
-    if (map->split_map[map->pos_y][map->pos_x + 1] == '1')
+    if (map->split_map[map->p1][map->p2 + 1] == '1')
         return ;
-    if (map->split_map[map->pos_y][map->pos_x + 1] == 'E'
-        && map->collect != 0)
+    if (map->split_map[map->p1][map->p2 + 1] == 'E'
+        && map->coin_nbr != 0)
         return ;
-    if (map->split_map[map->pos_y][map->pos_x + 1] == 'C')
+    if (map->split_map[map->p1][map->p2 + 1] == 'E'
+        && map->coin_nbr == 0)
+        exit(0);
+    if (map->split_map[map->p1][map->p2 + 1] == 'C')
     {
-        map->split_map[map->pos_y][map->pos_x + 1] = 'P';
-        map->split_map[map->pos_y][map->pos_x] = '0';
-        map->pos_x++;
-        map->collect--;
+        map->split_map[map->p1][map->p2 + 1] = 'P';
+        map->split_map[map->p1][map->p2] = '0';
+        map->coin_nbr--;
     }
     else
-        map->split_map[map->pos_y][map->pos_x + 1] = 'P';
-        map->split_map[map->pos_y][map->pos_x] = '0';
-        map->pos_x++;
+    {
+        map->split_map[map->p1][map->p2 + 1] = 'P';
+        map->split_map[map->p1][map->p2] = '0';
+    }
     map->movement++;
 }
 
 void    left(t_map *map)
 {
-    if (map->split_map[map->pos_y][map->pos_x - 1] == '1')
+    if (map->split_map[map->p1][map->p2 - 1] == '1')
         return ;
-    if (map->split_map[map->pos_y][map->pos_x - 1] == 'E'
-        && map->collect != 0)
-        return ;
-    if (map->split_map[map->pos_y][map->pos_x - 1] == 'C')
+    if (map->split_map[map->p1][map->p2 - 1] == 'E'
+        && map->coin_nbr != 0)
+    if (map->split_map[map->p1][map->p2 - 1] == 'E'
+        && map->coin_nbr == 0) 
+        exit(0);
+    if (map->split_map[map->p1][map->p2 - 1] == 'C')
     {
-        map->split_map[map->pos_y][map->pos_x - 1] = 'P';
-        map->split_map[map->pos_y][map->pos_x] = '0';
-        map->pos_x--;
-        map->collect--;
+        map->split_map[map->p1][map->p2 - 1] = 'P';
+        map->split_map[map->p1][map->p2] = '0';
+        map->coin_nbr--;
     }
     else
-        map->split_map[map->pos_y][map->pos_x - 1] = 'P';
-        map->split_map[map->pos_y][map->pos_x] = '0';
-        map->pos_x--;
+    {
+        map->split_map[map->p1][map->p2 - 1] = 'P';
+        map->split_map[map->p1][map->p2] = '0';
+    }
     map->movement++;
 }
 
 int keybord(int key, t_map *map)
 {
     if (key == 126 || key == 13)
-        up(map);
+    {
+        find_palyer(map);
+       up(map);
+    }
     if (key == 125 || key == 1)
-        down(map);
+    {
+find_palyer(map);
+       down(map);
+    }
     if (key == 124 || key == 2)
-        right(map);
+    {
+       find_palyer(map);
+       right(map);
+    }
     if (key == 123 || key == 0)
-        left(map);
+    {
+       find_palyer(map);
+       left(map);
+    }
+    ft_show_in_map(map);
+    if (key == 53)
+        exit(0);
     return (0);
 }

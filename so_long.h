@@ -6,7 +6,7 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:35:26 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/28 23:46:19 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/29 00:34:12 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct s_map
 	void	*wall;
 	int	move_nbr;
 	int	coin_nbr;
+	int	p1;
+	int p2;
 }   t_map;
 
 char	*ft_add_join(int fd, char *saved);
@@ -55,4 +57,5 @@ int width_map(t_map *map);
 int lenght_map(t_map *map);
 int keybord(int key, t_map *map);
 void    coin_nbr(t_map *map);
+void    ft_show_in_map(t_map *map);
 #endif
