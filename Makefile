@@ -14,6 +14,7 @@ SOURCES = so_long.c\
 		./libft/ft_putstr_fd.c\
 		window.c\
 		moves.c\
+		flood_fill.c\
 
 OBJECTS = $(SOURCES:.c=.o)
 
@@ -27,7 +28,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJECTS)
 
-	$(CC) $(CFLAGS) $(OBJECTS) $(Mlx_F) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJECTS) $(Mlx_F) -o $(NAME) #-fsanitize=address
 
 clean :
 	rm -f $(OBJECTS)

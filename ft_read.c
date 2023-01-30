@@ -6,7 +6,7 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:57:43 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/28 01:27:21 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/30 03:42:54 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,4 +129,7 @@ void	check(t_map *map)
 	check_rectangular(map);
 	check_Walls(map);
 	check_body(map);
+	find_palyer(map);
+	flood_fill_player(map->p2, map->p1, map->split_map);
+	flood_fill_exit(map->p2, map->p1, map->split_map);
 }

@@ -6,7 +6,7 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:35:26 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/29 04:34:35 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/30 02:57:07 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,7 @@ int lenght_map(t_map *map);
 int keybord(int key, t_map *map);
 void    coin_nbr(t_map *map);
 void    ft_show_in_map(t_map *map);
+void	flood_fill_player(int pos_x, int pos_y, char **map);
+void	flood_fill_exit(int pos_x, int pos_y, char **map);
+void    find_palyer(t_map *map);
 #endif

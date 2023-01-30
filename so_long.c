@@ -76,12 +76,10 @@ int main(int ac, char **av)
 		readmap(&map);
 		check(&map);
 		coin_nbr(&map);
-		printf("%d\n", map.coin_nbr);
 		map.win_ptr = mlx_new_window(map.mlx_ptr, width_map(&map) * 70, lenght_map(&map) * 70, "so_long");
 		mlx_hook(map.win_ptr, 2, 0,keybord, &map);
 		ft_show_in_map(&map);
 		mlx_hook(map.win_ptr, 17, 0, quit, &map);
-		printf("%d--%d\n", map.p1, map.p2);
 		mlx_loop(map.mlx_ptr);
 	}
 	else 
