@@ -22,6 +22,12 @@ void    ft_show_in_map(t_map *map)
 	map->c_door = mlx_xpm_file_to_image(map->mlx_ptr, "./textures/closed_exit.xpm", &x, &y);
 	map->wall = mlx_xpm_file_to_image(map->mlx_ptr, "./textures/wall.xpm", &x, &y);
 
+	if (!map->player || !map->ground || !map->coin || !map->o_door || !map->c_door || !map->wall)
+	{
+		print_error("Invalid img");
+		exit(1);
+	}
+
 	i = 0;
 	while (map->split_map[i])
 	{

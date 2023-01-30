@@ -28,7 +28,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJECTS)
 
-	$(CC) $(CFLAGS) $(OBJECTS) $(Mlx_F) -o $(NAME) #-fsanitize=address
+	$(CC) $(CFLAGS) $(OBJECTS) $(Mlx_F) -o $(NAME) -fsanitize=address
 
 clean :
 	rm -f $(OBJECTS)
