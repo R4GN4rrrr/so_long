@@ -6,7 +6,7 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:35:26 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/30 02:57:07 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/30 21:20:38 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_map
 	int	coin_nbr;
 	int	p1;
 	int p2;
+	char	**dup_map;
 }   t_map;
 
 char	*ft_add_join(int fd, char *saved);

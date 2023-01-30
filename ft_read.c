@@ -6,7 +6,7 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:57:43 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/30 03:42:54 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/30 22:22:11 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	readmap(t_map *map)
 		line = get_next_line(map->fd);
 	}
 	map->split_map = ft_split(map->str, '\n');
+	map->dup_map = ft_split(map->str, '\n');
 }
 
 void	check_composed(t_map *map)
@@ -122,6 +123,55 @@ void	check_body(t_map *map)
 		i++;
 	}
 }
+
+void ft_help1(t_map *tmap)
+{
+	int i = 0, j;
+	char **map;
+
+	map = tmap->dup_map; 
+	flood_fill_player(tmap->p2, tmap->p1, tmap->dup_map);
+	while (map[i])
+	{
+		//exit(printf("here\n"));
+		printf("%s\n", map[i]);
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'C')
+			{
+				write(2, "Ivalid path\n", 12);
+				exit(1);
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void ft_help2(t_map *tmap)
+{
+	int i = 0, j;
+	char **map;
+
+	map = tmap->dup_map; 
+	flood_fill_exit(tmap->p2, tmap->p1, tmap->dup_map);
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'E')
+			{
+				write(2, "Invalid map2\n", 12);
+				exit(1);
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 void	check(t_map *map)
 {
 	check_composed(map);
@@ -130,6 +180,6 @@ void	check(t_map *map)
 	check_Walls(map);
 	check_body(map);
 	find_palyer(map);
-	flood_fill_player(map->p2, map->p1, map->split_map);
-	flood_fill_exit(map->p2, map->p1, map->split_map);
+	ft_help1(map);
+	ft_help2(map);
 }
