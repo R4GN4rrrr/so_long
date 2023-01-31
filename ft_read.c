@@ -6,7 +6,7 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:57:43 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/30 22:22:11 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/31 01:15:53 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,22 +91,22 @@ void	check_Walls(t_map *map)
 	while (map->split_map[0][j])
 	{
 		if (map->split_map[0][j] != '1')
-			print_error("inva1");
+			print_error("invalid map!");
 		j++;
 	}
 	while (map->split_map[i])
 	{
 		if (map->split_map[i][0] != '1')
-			print_error("inva2");
+			print_error("invalid map!");
 		if (map->split_map[i][l] != '1')
-			print_error("inva3");
+			print_error("invalid map!");
 		i++;
 	}
 	j = 0;
 	while (map->split_map[i - 1][j])
 	{
 		if (map->split_map[i - 1][j] != '1')
-			print_error("inva4");
+			print_error("invalid map!");
 		j++;
 	}
 }
@@ -133,8 +133,6 @@ void ft_help1(t_map *tmap)
 	flood_fill_player(tmap->p2, tmap->p1, tmap->dup_map);
 	while (map[i])
 	{
-		//exit(printf("here\n"));
-		printf("%s\n", map[i]);
 		j = 0;
 		while (map[i][j])
 		{

@@ -38,11 +38,13 @@ void    ft_show_in_map(t_map *map)
 			if (map->split_map[i][j] == '1')
 			{
 				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->wall, l, k);
+				mlx_string_put(map->mlx_ptr, map->win_ptr, 15, 15, 0xFFFFF0, ft_itoa(map->movement));
 			}
 			if (map->split_map[i][j] == 'C')
 			{
 				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->ground, l, k);
 				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->coin, l, k);
+				mlx_string_put(map->mlx_ptr, map->win_ptr, 15, 15, 0xFFFFF0, ft_itoa(map->movement));
 			}
 			if (map->split_map[i][j] == 'E')
 			{
@@ -50,15 +52,18 @@ void    ft_show_in_map(t_map *map)
 					mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->o_door, l, k);
 				else
 					mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->c_door, l, k);
+				mlx_string_put(map->mlx_ptr, map->win_ptr, 15, 15, 0xFFFFF0, ft_itoa(map->movement));
 			}
 			if (map->split_map[i][j] == '0')
 			{
 				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->ground, l, k);
+				mlx_string_put(map->mlx_ptr, map->win_ptr, 15, 15, 0xFFFFF0, ft_itoa(map->movement));
 			}
 			if (map->split_map[i][j] == 'P')
 			{
 				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->ground, l, k);
 				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->player, l, k);
+				mlx_string_put(map->mlx_ptr, map->win_ptr, 15, 15, 0xFFFFF0, ft_itoa(map->movement));
 			}
 			l += 70;
 			j++;
@@ -71,7 +76,7 @@ int main(int ac, char **av)
 {
 	t_map map;
 	map.coin_nbr = 0;
-	map.movement = 0;
+	map.movement = 1;
 	if (ac == 2)
 	{
 		map.move_nbr = 0;

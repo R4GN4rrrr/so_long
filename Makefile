@@ -15,6 +15,11 @@ SOURCES = so_long.c\
 		window.c\
 		moves.c\
 		flood_fill.c\
+		./libft/ft_putnbr_fd.c\
+		./libft/ft_putchar_fd.c\
+		./libft/ft_itoa.c\
+		./libft/ft_strdup.c\
+		./libft/ft_memcpy.c\
 
 OBJECTS = $(SOURCES:.c=.o)
 
