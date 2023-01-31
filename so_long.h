@@ -6,7 +6,7 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:35:26 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/31 04:42:13 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/31 05:25:22 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,17 @@
 # include <mlx.h>
 # include <fcntl.h>
 # include "./libft/libft.h"
+
+typedef struct s_vars
+{
+	int	a;
+	int	b;
+	int	c;
+	int	l;
+	int	k;
+	int	m;
+	int	n;
+}	t_vars;
 
 typedef struct s_map
 {

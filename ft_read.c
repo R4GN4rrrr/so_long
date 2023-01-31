@@ -6,7 +6,7 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:57:43 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/31 04:44:33 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/31 05:12:24 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,33 +60,30 @@ void	check_items(t_map *map)
 
 void	check_walls(t_map *map)
 {
-	int	i;
-	int	l;
-	int	j;
+	t_vars	var;
 
-	i = 0;
-	j = 0;
-	l = ft_strlen(map->split_map[0]) - 1;
-	while (map->split_map[0][j])
+	var.a = 0;
+	var.b = 0;
+	var.c = ft_strlen(map->split_map[0]) - 1;
+	while (map->split_map[0][var.b])
 	{
-		if (map->split_map[0][j] != '1')
+		if (map->split_map[0][var.b] != '1')
 			print_error("invalid map!");
-		j++;
+		var.b++;
 	}
-	while (map->split_map[i])
+	while (map->split_map[var.a])
 	{
-		if (map->split_map[i][0] != '1')
+		if (map->split_map[var.a][0] != '1')
 			print_error("invalid map!");
-		if (map->split_map[i][l] != '1')
+		if (map->split_map[var.a][var.c] != '1')
 			print_error("invalid map!");
-		i++;
+		var.a++;
 	}
-	j = 0;
-	while (map->split_map[i - 1][j])
+	var.b = -1;
+	while (map->split_map[var.a - 1][++var.b])
 	{
-		if (map->split_map[i - 1][j] != '1')
+		if (map->split_map[var.a - 1][var.b] != '1')
 			print_error("invalid map!");
-		j++;
 	}
 }
 
