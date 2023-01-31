@@ -6,7 +6,7 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:57:43 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/31 04:24:20 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/31 04:44:33 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	check_items(t_map *map)
 		print_error("The map must contain at least 1 collectible!");
 }
 
-void	check_Walls(t_map *map)
+void	check_walls(t_map *map)
 {
 	int	i;
 	int	l;
@@ -95,7 +95,7 @@ void	check(t_map *map)
 	check_composed(map);
 	check_items(map);
 	check_rectangular(map);
-	check_Walls(map);
+	check_walls(map);
 	check_body(map);
 	find_palyer(map);
 	ft_help1(map);
