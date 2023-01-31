@@ -20,6 +20,7 @@ SOURCES = so_long.c\
 		./libft/ft_itoa.c\
 		./libft/ft_strdup.c\
 		./libft/ft_memcpy.c\
+		utils.c\
 
 OBJECTS = $(SOURCES:.c=.o)
 

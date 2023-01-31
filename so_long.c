@@ -1,11 +1,6 @@
 #include <mlx.h>
 #include <stdio.h>
 #include "so_long.h"
-int quit()
-{
-	exit(0);
-	return (0);
-}
 
 void    ft_show_in_map(t_map *map)
 {
@@ -22,7 +17,8 @@ void    ft_show_in_map(t_map *map)
 	map->c_door = mlx_xpm_file_to_image(map->mlx_ptr, "./textures/closed_exit.xpm", &x, &y);
 	map->wall = mlx_xpm_file_to_image(map->mlx_ptr, "./textures/wall.xpm", &x, &y);
 
-	if (!map->player || !map->ground || !map->coin || !map->o_door || !map->c_door || !map->wall)
+	if (!map->player || !map->ground || !map->coin 
+	|| !map->o_door || !map->c_door || !map->wall)
 	{
 		print_error("Invalid img");
 		exit(1);
@@ -36,35 +32,15 @@ void    ft_show_in_map(t_map *map)
 		while (map->split_map[i][j])
 		{
 			if (map->split_map[i][j] == '1')
-			{
-				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->wall, l, k);
-				mlx_string_put(map->mlx_ptr, map->win_ptr, 15, 15, 0xFFFFF0, ft_itoa(map->movement));
-			}
+				wall(map, l, k);
 			if (map->split_map[i][j] == 'C')
-			{
-				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->ground, l, k);
-				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->coin, l, k);
-				mlx_string_put(map->mlx_ptr, map->win_ptr, 15, 15, 0xFFFFF0, ft_itoa(map->movement));
-			}
+				coin(map, l, k);
 			if (map->split_map[i][j] == 'E')
-			{
-				if (map->coin_nbr == 0)
-					mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->o_door, l, k);
-				else
-					mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->c_door, l, k);
-				mlx_string_put(map->mlx_ptr, map->win_ptr, 15, 15, 0xFFFFF0, ft_itoa(map->movement));
-			}
+				dooor(map, l, k);
 			if (map->split_map[i][j] == '0')
-			{
-				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->ground, l, k);
-				mlx_string_put(map->mlx_ptr, map->win_ptr, 15, 15, 0xFFFFF0, ft_itoa(map->movement));
-			}
+				zero(map, l, k);
 			if (map->split_map[i][j] == 'P')
-			{
-				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->ground, l, k);
-				mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->player, l, k);
-				mlx_string_put(map->mlx_ptr, map->win_ptr, 15, 15, 0xFFFFF0, ft_itoa(map->movement));
-			}
+				player(map, l, k);
 			l += 70;
 			j++;
 		}

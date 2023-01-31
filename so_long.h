@@ -6,7 +6,7 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 17:35:26 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/30 21:20:38 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/31 04:28:03 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,28 @@ int		ft_strch(char *s);
 void    readmap(t_map *map);
 void	check(t_map *map);
 void 	print_error(char *s);
-int width_map(t_map *map);
-int lenght_map(t_map *map);
-int keybord(int key, t_map *map);
+int 	width_map(t_map *map);
+int 	lenght_map(t_map *map);
+int 	keybord(int key, t_map *map);
 void    coin_nbr(t_map *map);
 void    ft_show_in_map(t_map *map);
 void	flood_fill_player(int pos_x, int pos_y, char **map);
 void	flood_fill_exit(int pos_x, int pos_y, char **map);
 void    find_palyer(t_map *map);
+void	player(t_map *map, int l, int k);
+void	zero(t_map *map, int l, int k);
+void	dooor(t_map *map, int l, int k);
+void	coin(t_map *map, int l, int k);
+void	wall(t_map *map, int l, int k);
+int		quit();
+void	ft_help2(t_map *tmap);
+void	ft_help1(t_map *tmap);
+void	check_rectangular(t_map *map);
+void	check_composed(t_map *map);
+void	check_body(t_map *map);
+void    coin_nbr(t_map *map);
+
+
+
+
 #endif

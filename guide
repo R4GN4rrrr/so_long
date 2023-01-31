@@ -1,3 +1,0 @@
-1 == moves.c (up, down, left, right);
-2 == check map (get_next_line, valid path, -1 player, -1 exit, -1 collectable, map.ber)
-3 ==   

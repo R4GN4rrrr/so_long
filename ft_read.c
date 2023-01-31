@@ -6,7 +6,7 @@
 /*   By: ymenyoub <ymenyoub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 22:57:43 by ymenyoub          #+#    #+#             */
-/*   Updated: 2023/01/31 01:15:53 by ymenyoub         ###   ########.fr       */
+/*   Updated: 2023/01/31 04:24:20 by ymenyoub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,6 @@ void	readmap(t_map *map)
 	map->dup_map = ft_split(map->str, '\n');
 }
 
-void	check_composed(t_map *map)
-{
-	int i = 0;
-
-	while (map->str[i])
-	{
-		if (map->str[i] != '0' && map->str[i] != '1'
-			&& map->str[i] != '\n' && map->str[i] != 'P'
-			&& map->str[i] != 'C' && map->str[i] != 'E')
-			print_error("Stranger element");
-		i++;
-	}
-}
 void	check_items(t_map *map)
 {
 	int	i;
@@ -71,23 +58,15 @@ void	check_items(t_map *map)
 		print_error("The map must contain at least 1 collectible!");
 }
 
-void	check_rectangular(t_map *map)
-{
-	int i = 1;
-	size_t l = ft_strlen(map->split_map[0]);
-	while (map->split_map[i])
-	{
-		if (ft_strlen(map->split_map[i]) != l)
-			print_error("The map must be rectangular");
-		i++;
-	}
-}
-
 void	check_Walls(t_map *map)
 {
-	int i = 0;
-	int	l = ft_strlen(map->split_map[0]) - 1;
-	int j = 0;
+	int	i;
+	int	l;
+	int	j;
+
+	i = 0;
+	j = 0;
+	l = ft_strlen(map->split_map[0]) - 1;
 	while (map->split_map[0][j])
 	{
 		if (map->split_map[0][j] != '1')
@@ -108,65 +87,6 @@ void	check_Walls(t_map *map)
 		if (map->split_map[i - 1][j] != '1')
 			print_error("invalid map!");
 		j++;
-	}
-}
-void	check_body(t_map *map)
-{
-	int i = 0;
-
-	if (map->str[i] != '1')
-		print_error("something_wrong");
-	while (map->str[i])
-	{
-		if (map->str[i] == '\n' && map->str[i + 1] != '1')
-			print_error("there is new line");
-		i++;
-	}
-}
-
-void ft_help1(t_map *tmap)
-{
-	int i = 0, j;
-	char **map;
-
-	map = tmap->dup_map; 
-	flood_fill_player(tmap->p2, tmap->p1, tmap->dup_map);
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] == 'C')
-			{
-				write(2, "Ivalid path\n", 12);
-				exit(1);
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-void ft_help2(t_map *tmap)
-{
-	int i = 0, j;
-	char **map;
-
-	map = tmap->dup_map; 
-	flood_fill_exit(tmap->p2, tmap->p1, tmap->dup_map);
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] == 'E')
-			{
-				write(2, "Invalid map2\n", 12);
-				exit(1);
-			}
-			j++;
-		}
-		i++;
 	}
 }
 
